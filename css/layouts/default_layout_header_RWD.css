@@ -1,0 +1,62 @@
+/************************************************************************ 953px以上 ***********************************************/
+@media screen and (min-width: 769px) {
+    
+    /* navbar */
+    nav{
+        padding-right: 0;
+    }
+    nav,.nav__nav-link{
+        flex-direction: row;
+    }
+    .nav__logo{
+        /* 大螢幕LOGO不加底線 */
+        border: 0;
+    }
+    .nav__nav-link{
+        height: inherit;
+        /* 20px */
+        font-size: 1.25em;
+        font-weight:500;
+        color: rgb(54, 54, 54);
+    }
+    .nav__nav-link>a{
+        /* 大螢幕時寬度auto自裁不會擠到歪掉 */
+        width: auto; 
+        min-height: 3.125em;
+        flex-shrink: 1;
+        background: none;
+        border-top: 0;
+    }
+
+    /* menu button order 改成 1 (排到最右邊，其他沒指定的元素預設 order:0 )*/
+    /* 大螢幕不需要menu bar 所以消失 */
+    .nav__menu-btn{
+        order: 1;
+        width: 0;
+        display: none;
+    }
+    
+    .mt100{
+        margin-top: 160px;
+    }
+    /* nav end */
+
+
+
+}
+/* ***************************************************************************  1200以上 ********************************************* */
+@media screen and (min-width: 1201px) {
+    
+    /* nav bar */
+    .nav__nav-link{
+        height: inherit;
+    }
+    .nav__nav-link>a{
+        /* 2px的分隔線 */
+        border-left: solid #757575 0.1em;
+    }
+
+    /* nav end */
+
+}
+/* ************************************************************************* End ********************************************************************************************/
