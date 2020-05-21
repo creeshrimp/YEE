@@ -38,7 +38,7 @@ function getDB_by_name($db_name){
          $DATABASE = "test";
          $CHARSET = "utf8"; //字元集 資料庫編碼有設定過的話好像就沒差
          $USER = "root";
-         $PASSWORD = "";
+         $PASSWORD = "123456";
          return getDB($HOST, $DATABASE, $CHARSET, $USER, $PASSWORD);
          break;
 

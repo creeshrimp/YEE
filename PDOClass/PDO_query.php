@@ -1,4 +1,3 @@
-
 <?php
    //-----------------------------------------------------------//
   //          自訂通用的PDO函式 :PDO_query()                    //
@@ -8,9 +7,6 @@
 /*      PDO_query(  SQL語法,  BIND值(陣列) ,BIND用型別  )  */
 
 /**     回傳值為一個sql結果集R， 如果語法為查詢可以在進一步rs=R->fetch(PDO::FETCH_ASSOC)*/
-
-?>
-<?php
 
 
 function PDO_query(){
@@ -34,7 +30,7 @@ function PDO_query(){
     // ------------                     引入連線檔案                ----------------------
     //  !! 注意!! 引入連線檔一定要用 require不可以用require_once，不然PDO連線物件只會建立一次 !!
     // $link = require_once("sql_config_company_local.php");
-    $link = require "sql_config_company.php";
+    $link = require "sql_config_local.php";
     // ----------------------------------------------------------------------------------
 
     try {
