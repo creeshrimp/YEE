@@ -1,7 +1,7 @@
 <?php
 class Controller{
     public $current_view;
-    public $current_layout = "layouts/default_layout.php";
+    public $current_layout = "default_layout";
     public $_DATA = [];
 
     function __construct($action,$params){
@@ -16,10 +16,10 @@ class Controller{
             // 在要執行的action裡放入$param(從url尾端傳進來的[陣列])
             $this->$action($params);
         }
-        // 都不存在代表你亂打的 或 你忘記宣告actionTndex()，請你ㄘ404
+        // 都不存在代表你亂打的 或 你忘記宣告actionIndex()，請你ㄘ404
         else{
-            // echo "action-$action not found";
-            require_once "views/404/404.php";
+            echo "action-$action not found";
+            // require_once "views/404/404.php";
         }
     }
 
@@ -74,11 +74,11 @@ class Controller{
         return ob_get_clean();
     }
 
-    // 把當前的view用變數丟進layout裡面顯示
+    // 把當前的view[字串]用變數丟進layout裡面顯示
     // 可在layout裡用$output_view調用
     private function bind_view_in_layout($layoutname){
         $output_view = $this->current_view;
-        require_once $layoutname;
+        require_once 'layouts/'.$layoutname.'.php';
     }
 // --------------------   End bind   ---------------------
 
@@ -86,21 +86,21 @@ class Controller{
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!     [重新導向] : redirect([$route, $get值1, $get值2,...])    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // 
-function redirect($url){
-    // 如果是陣列代表後面還有GET值
-    if(is_array($url)){
-        $route = $url[0];
-        $getArr = array_slice($url,1);
-        $getString = http_build_query($getArr);
-        $url=  $route.'?'.$getString;
-        
-        header("location: $url");
-        die();
+    function redirect($url){
+        // 如果是陣列代表後面還有GET值
+        if(is_array($url)){
+            $route = $url[0];
+            $getArr = array_slice($url,1);
+            $getString = http_build_query($getArr);
+            $url=  $route.'?'.$getString;
+            
+            header("location: $url");
+            die();
+        }
+        // 如果不是陣列那就直接跳轉去對應的route就好啦
+        else{
+            header("location: $url");
+            die();
+        }
     }
-    // 如果不是陣列那就直接跳轉去對應的route就好啦
-    else{
-        header("location: $url");
-        die();
-    }
-}
 }

@@ -47,8 +47,8 @@ else{
     //                          *** 如果controller 不存在就 require 404 頁面進來  ***
     else{
         // header('HTTP/1.1 404 Not Found');
-        // die('404 - Controller - '.$ctrlPath.' - not found');
-        require_once "views/404/404.php";
+        die('404 - Controller - '.$ctrlPath.' - not found');
+        // require_once "views/404/404.php";
     }
 }
 
